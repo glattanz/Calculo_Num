@@ -72,7 +72,7 @@ float abs,cont=0,fa,fb, fx, fy=0;
 	printf("\nK\tA\tMédia\tB\tf(a)\tf(med)  f(b)");
 	printf("\n%d\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f", i, a, x, b, fa, fx, fb);
 	
-	for (i=2; i<cont&&fabs(fx)>e ; i++){
+	for (i=2; i<cont&&(fabs(fx)>e) ; i++){
 		fy=(fa*fx);
 		if(fy<0){
 			b=x;
@@ -92,7 +92,7 @@ float abs,cont=0,fa,fb, fx, fy=0;
 			
 		}
 		
-		//Recalcular a função
+		//Recalcular a media
 		x=(a+b)/2;
 	
 		fx=funcao(x);
