@@ -1,0 +1,11 @@
+Criar um código para calculo de funções respeitando as seguintes condições:
+-(B) deve ser maior do que (A)
+-f(a)*f(b) deve ser negativo
+-se f(a) * f(x) = negativo
+  b recebe a media 
+  se nao 
+  a recebe a media
+
+fazer o codigo parar quando chegar no erro
+
+NOTAS: valores pra a=2 e b=5 para f(a)*f(b) ser negativo
