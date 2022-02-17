@@ -5,7 +5,8 @@
 
 float funcao(float x){
 
-return (x*log(x))-3.2;
+//return (x*log(x))-3.2;
+return ((x*x)-9);
 		
 }
 
@@ -13,17 +14,17 @@ int main(){
 	
 	setlocale( LC_ALL, "" );
 	
-float a,b,c,e, med, x;
-float abs,cont=0,fa,fb, fx, fy;
+float a,b,c,e, med, x, w;
+float abs,cont=0,fa,fb, fx, fy=0;
 	
-	printf ("Informe o valor do limite inferior(A):");
+	printf ("Informe o valor do limite inferior (A):");
 	scanf ("%f",&a);
 	printf ("Informe o valor do limite superior (B):");
 	scanf ("%f",&b);
 	
 	
 	while(a>=b){
-		printf("\nb deve ser maior do que a\n");
+		printf("\n(B) deve ser maior do que (A)\n");
 		
 		printf ("\nInforme o valor do limite inferior (A):");
 		scanf ("%f",&a);
@@ -45,8 +46,12 @@ float abs,cont=0,fa,fb, fx, fy;
 	}
 	
 	while(cont<100){
-		printf ("\nInforme o número máximo de interações:");
+		printf ("\nInforme o número máximo de interações:\n");
 		scanf ("%f",&cont);
+		
+		if(cont<100){
+			printf("\nInsira um valor maior do que 100\n");
+		}
 	}
 	
 	while(e>0.1){
@@ -55,15 +60,16 @@ float abs,cont=0,fa,fb, fx, fy;
 	}
 	
 	x=(a+b)/2;
+	
+	printf("Média: %f", x);
+	
 	fx=funcao(x);
 	
 	int i=1;
 	
 	printf("====================================================");
-	printf("\nK\tA\tMédia\tB\tf(a)\tf(med)  f(b)\tSituação");
-	printf("\n%d\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f", i, a, x, b, fa, fx, fb);
-	
-	
+	printf("\nK\tA\tMédia\tB\tf(a)\tf(med)  f(b)\tf(y)");
+	printf("\n%d\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f", i, a, x, b, fa, fx, fb, fy);
 	
 	for (i=1; i<cont||fabs(fx)<e ; i++){
 		fy=(fa*fx);
@@ -73,7 +79,7 @@ float abs,cont=0,fa,fb, fx, fy;
 			fb=funcao(b);
 			
 			//printf("%f\n", fa*fx);
-			printf("\n%d\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f", i, a, x, b, fa, fx, fb);
+			printf("\n%d\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f", i, a, x, b, fa, fx, fb, fy);
 		}
 		if(fy>=0){
 			a=x;
@@ -81,7 +87,7 @@ float abs,cont=0,fa,fb, fx, fy;
 			fb=funcao(b);
 			
 			//printf("%f\n", fa*fx);
-			printf("\n%d\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f", i, a, x, b, fa, fx, fb);
+			printf("\n%d\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f", i, a, x, b, fa, fx, fb, fy);
 		}
 	}
 	
