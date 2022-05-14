@@ -4,30 +4,48 @@
 #include <iostream>
 #include "matricial.h"
 
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
-
 int main(int argc, char** argv) {
 	
 	setlocale (LC_ALL, "");
 	
-	int v = variaveis();
+	int v = 0;
 	
-	float matriz[v][v];
+	do{
+		v = variaveis();
+	}while(v<0);
 	
-	//preenche_imprime(v, matriz);
+	float **matriz = new float *[v];
+	aloca(matriz, v);
 	
-	for(int i=1; i<=(v); i++){
-		for(int j=1; j<=(v); j++){
-			//printf("Insira o valor do elemento [%d][%d]: ", i,j);
-			//scanf("%f", &matriz[i][j]);
-			matriz[i][j] = preenche_imprime(v, matriz);
-			printf("%.0f \t", matriz[i][j]);
-		}
+	float **diagonal = new float *[v];
+	aloca(diagonal, v);
 	
-		printf("\n");
-	}
+	float **superior = new float *[v];
+	aloca(superior, v);
 	
-	//void diagonal(float ** matriz, int v){
+	float **inferior = new float *[v];
+	aloca(inferior, v);
+	
+	float **inversa = new float *[v];
+	aloca(inversa, v);
+	
+	float **resultante = new float *[v];
+	aloca(resultante, v);
+	
+	preenche_imprime(v, matriz);
+	
+	d(matriz, diagonal, v);
+	
+	s(matriz, superior, v);
+	
+	i(matriz, inferior, v);
+	
+	inv(diagonal, inversa, v);
+	
+	printf("\nSoma da superior + inferior\n");
+	soma(superior, inferior, resultante, v);
+	
 	
 	return 0;
 }
+
