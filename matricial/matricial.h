@@ -1,4 +1,4 @@
-void aloca(float **matriz, int& v);
+void aloca(float **matriz, int& l, int& c);
 
 int variaveis();
  
@@ -13,4 +13,5 @@ void i(float **matriz, float **inferior, int& v);
 void inv(float **diagonal, float **inversa, int& v);
 
 void soma(float **matriz1, float **matriz2, float **matriz3, int& v);
-	
+
+void multiplicacao(float **matriz1, float **matriz2, float **matriz3, int& lm1, int& cm1, int& cm2, int& lm2);

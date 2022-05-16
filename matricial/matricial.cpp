@@ -4,10 +4,10 @@
 #include <iostream>
 #include "matricial.h"
 
-void aloca(float **matriz, int& v){
+void aloca(float **matriz, int& l, int& c){
 
-	for(int i=0; i < v; i++)
-		matriz[i] = new float[v];	
+	for(int i=0; i < l; i++)
+		matriz[i] = new float[c];	
 }
 
 int variaveis(){
@@ -24,10 +24,11 @@ void preenche_imprime(int& v, float **matriz){
 	
 	for(int i=0; i<(v); i++){
 		for(int j=0; j<(v); j++){
-			//printf("Insira o valor do elemento [%d][%d]: ", i,j);
-			//scanf("%f", &matriz[i][j]);
-			matriz[i][j] = (rand() %10);
-			//matriz[i][j] = 3;
+			printf("Insira o valor do elemento [%d][%d]: ", i,j);
+			scanf("%f", &matriz[i][j]);
+			
+			//matriz[i][j] = (rand() %10);
+			
 			printf("%.0f \t", matriz[i][j]);
 		}
 	
@@ -131,6 +132,7 @@ void soma(float **matriz1, float **matriz2, float **matriz3, int& v){
 		}
 		
 		/*
+		Para deixar arrumadinho rs
 		if(i==1){
 			printf("\t+\t");
 		}
@@ -155,4 +157,33 @@ void soma(float **matriz1, float **matriz2, float **matriz3, int& v){
 	
 		printf("\n");
 	}
+}
+
+void multiplicacao(float **matriz1, float **matriz2, float **matriz3, int& lm1, int& cm1, int& cm2, int& lm2){
+	
+	int aux;
+	
+	printf("----MULTIPLICAÇÃO DE MATRIZES----\n");
+	
+	if(cm1 == lm2){
+		
+		for(int i = 0; i < lm1; i++) {
+			for(int j = 0; j < cm2; j++) {
+				
+				matriz3[i][j] = 0;
+				for(int x = 0; x < lm2; x++) {
+					aux +=  matriz1[i][x] * matriz2[x][j];
+				}
+	
+				matriz3[i][j] = aux;
+				aux = 0;
+				
+				printf("%0.f\t", matriz3[i][j]);
+			}
+		
+		printf("\n");
+		}
+	}else
+		printf("Insira uma matriz em que o número de colunas da 1º seja igual ao número de linhas da 2º!\n");
+	
 }
