@@ -1,25 +1,29 @@
 #include <locale.h>
+#include <math.h>
 #include <stdlib.h>
 #include <time.h>
 #include <iostream>
 #include "matricial.h"
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv){
 	
+	srand(time(NULL));
 	setlocale (LC_ALL, "");
 	
 	int v = 0;
 	
+	//PEDINDO NUMERO DE VARIAVEIS
 	do{
 		v = variaveis();
 	}while(v<0);
 	
+	//DECLARAÇÃO DE MATRIZES
 	float **matriz = new float *[v];
 	aloca(matriz, v, v);
 	
-	int l = 1;
-	float **b = new float *[v];
-	aloca(b, l, v);
+	int c = 1;
+	float **b = new float *[c];
+	aloca(b, v, c);
 	
 	float **diagonal = new float *[v];
 	aloca(diagonal, v, v);
@@ -39,15 +43,19 @@ int main(int argc, char** argv) {
 	float **resultantemulti = new float *[v];
 	aloca(resultantemulti, v, v);
 	
-	float **j = new float *[v];
-	aloca(j, v, v);
+	float **jota = new float *[v];
+	aloca(jota, v, v);
 	
-	//float **e = new float *[v];
-	//aloca(e, v, v);
+	float **xis = new float *[v];
+	aloca(xis, v, c);
 	
-	preenche_imprime(v, matriz);
+	float **erro = new float *[v];
+	aloca(erro, v, v);
 	
-	//Obtenção de metrizes
+	//CHAMADA DE FUNCOES
+	preenche_imprime(v, matriz, b);
+	
+		//Obtenção de matrizes
 	d(matriz, diagonal, v);
 	
 	s(matriz, superior, v);
@@ -56,26 +64,26 @@ int main(int argc, char** argv) {
 	
 	inv(diagonal, inversa, v);
 	
-	printf("\nSoma da superior + inferior\n");
-	soma(superior, inferior, resultantesoma, v);
+	j(inversa, superior, inferior, jota, v);
 	
-	printf("\nMultiplicação da soma * inversa\n");
-	multiplicacao(resultantesoma, inversa, resultantemulti, v, v, v, v);
+	chuteinicial(xis, v);
 	
-	/*for(int i=0; i<v; i++){
-		for(int j=0; j<v; j++){
-		
-		 	j[i][j] = resultantemulti[i][j];
-		 	
-		}
+	e(erro, v);
 	
-	}*/
+	//x(jota, xis, erro, v);
 	
-	//printf("\nMultiplicação da inversa * b\n");
-	//soma(inversa, b, e, v);
+	int pare=0;
 	
-	
+	do{
+		x(jota, xis, erro, v);
+		condicao(xis, erro, matriz, b, v);
+		//pare = condicao(xis, erro, matriz, b, v);
+		pare++;	
+	}
+	while(pare <= 10);
 	
 	return 0;
 }
+
+
 
